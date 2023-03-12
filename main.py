@@ -148,8 +148,8 @@ def main():
 
     while True:
         sauce_choice = input(
-            "Sos seçiniz (Zeytin, Mantarlar, KeciPeyniri, Et, Sogan, Misir) ya da bitirmek için 'bittir' yazınız: ").lower()
-        if sauce_choice == "bittir":
+            "Sos seçiniz (Zeytin, Mantarlar, KeciPeyniri, Et, Sogan, Misir) ya da bitirmek için 'bitir' yazınız: ").lower()
+        if sauce_choice == "bitir":
             break
         elif sauce_choice in sauce_choices:
             pizza = sauce_choices[sauce_choice](pizza)
