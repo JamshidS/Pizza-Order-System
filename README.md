@@ -47,7 +47,7 @@ class Pizza:
 # Alt Sınıf Oluşturma: "Pizza"
 Klasik, Margherita, Türk Pizzası vb. pizza sınıfları oluşturun. Her bir pizzanın kendine ait bir fiyatı ve açıklaması olmalıdır.
 
-```
+```python
 class KlasikPizza(Pizza):
     def __init__(self):
         super().__init__("Klasik Pizza", 15)
@@ -68,7 +68,8 @@ class SadePizza(Pizza):
 # Üst Sınıf Oluşturma: "Decorator"
 Bir Decorator sınıfı oluşturun. Decorator, burada tüm sos sınıflarının süper sınıfı olarak adlandırılır.
 Decorator sınıfı, pizza sınıfının özelliklerini kullanarak get_description() ve get_cost() yöntemlerini kullanacaktır.
-```
+
+```python
 class SosDecorator(Pizza):
     def __init__(self, pizza, description="", cost=0):
         super().__init__(description, cost)
