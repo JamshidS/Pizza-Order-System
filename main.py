@@ -47,7 +47,7 @@ class Decorator:
 
 class Zeytin(Decorator):
     def __init__(self, component):
-        super().__init__(self, component)
+        super().__init__(component)
         self._description = "Zeytin Sos"
         self._cost = 1.5
 
