@@ -34,52 +34,34 @@ Pizza sınıfını ve bu sınıfın içindeki encapsulation(kapsülleme) için g
 
 ```python
 class Pizza:
-    def __init__(self, description="", cost=0):
+    def __init__(self, description, cost):
         self.description = description
         self.cost = cost
-        
+
     def get_description(self):
         return self.description
-    
+
     def get_cost(self):
         return self.cost
 ```
 # Alt Sınıf Oluşturma: "Pizza"
 Klasik, Margherita, Türk Pizzası vb. pizza sınıfları oluşturun. Her bir pizzanın kendine ait bir fiyatı ve açıklaması olmalıdır.
 
-```python
-class KlasikPizza(Pizza):
-    def __init__(self):
-        super().__init__("Klasik Pizza", 15)
-
-class MargheritaPizza(Pizza):
-    def __init__(self):
-        super().__init__("Margarita Pizza", 18)
-
-class TurkPizza(Pizza):
-    def __init__(self):
-        super().__init__("Türk Pizza", 20)
-
-class SadePizza(Pizza):
-    def __init__(self):
-        super().__init__("Sade Pizza", 12)
-```
 
 # Üst Sınıf Oluşturma: "Decorator"
 Bir Decorator sınıfı oluşturun. Decorator, burada tüm sos sınıflarının süper sınıfı olarak adlandırılır.
 Decorator sınıfı, pizza sınıfının özelliklerini kullanarak get_description() ve get_cost() yöntemlerini kullanacaktır.
 
 ```python
-class SosDecorator(Pizza):
-    def __init__(self, pizza, description="", cost=0):
-        super().__init__(description, cost)
-        self.component = pizza
+class Decorator:
+    def __init__(self, component):
+        self.component = component
 
     def get_cost(self):
-        return self.component.get_cost() + Pizza.get_cost(self)
+        return str(self.component.get_cost() + Pizza.get_cost(self))
 
     def get_description(self):
-        return self.component.get_description() +
+        return self.component.get_description() + ' ' + Pizza.get_description(self)
 ```
 ## Not: 
 Bu proje sadece bir örnek projedir ve gerçek bir pizzacı dükkanı için kullanılmamalıdır. 
