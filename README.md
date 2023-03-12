@@ -28,12 +28,13 @@ yaml
 14: Et
 15: Soğan
 16: Mısır
-* Teşekkür ederiz! ```
+* Teşekkür ederiz!```
 
 ### Pizza Üst Sınıfını Oluşturma:
 
 Pizza sınıfını oluşturun.
-Bu sınıfın içindeki encapsulation(kapsülleme) için ``` get_description()``` ve ```get_cost() ``` methodlarını tanımlayın.
+Bu sınıfın içindeki encapsulation(kapsülleme) için 
+``` get_description()``` ve ```get_cost() ``` methodlarını tanımlayın.
 NOT: Bu açıklama hazırlanan pizzanın kısa bir açıklaması olmalıdır!
 
 ### Pizza Alt Sınıflarını Oluşturma:
