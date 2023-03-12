@@ -47,15 +47,16 @@ class Decorator:
 
 class Zeytin(Decorator):
     def __init__(self, component):
-        super().__init__(self, component)
+        super().__init__(component)
         self._description = "Zeytin Sos"
-        self._cost = 1.5
+        self._cost = 1.0
 
     def get_cost(self):
         return self._cost + self.component.get_cost()
 
     def get_description(self):
         return self.component.get_description() + ' ' + self._description
+
 
 class Mantarlar(Decorator):
     def __init__(self, component):
@@ -69,6 +70,7 @@ class Mantarlar(Decorator):
     def get_description(self):
         return self.component.get_description() + ' ' + self._description
 
+
 class KeciPeyniri(Decorator):
     def __init__(self, component):
         super().__init__(self, component)
@@ -81,6 +83,7 @@ class KeciPeyniri(Decorator):
     def get_description(self):
         return self.component.get_description() + ' ' + self._description
 
+
 class Et(Decorator):
     def __init__(self, component):
         super().__init__(component)
@@ -92,6 +95,7 @@ class Et(Decorator):
 
     def get_description(self):
         return self.component.get_description() + ' ' + self._description
+
 
 class Sogan(Decorator):
     def __init__(self, component):
@@ -117,6 +121,7 @@ class Misir(Decorator):
 
     def get_description(self):
         return self.component.get_description() + ' ' + self._description
+
 
 def main():
     with open('Menu.txt', 'r') as f:
@@ -164,7 +169,9 @@ def main():
 
     with open('Orders_Database.csv', encoding='utf-8', mode='a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([pizza.get_description(), name, tc_number, credit_card_number, total_cost, datetime.datetime.now(), credit_card_pin])
+        writer.writerow(
+            [pizza.get_description(), name, tc_number, credit_card_number, total_cost, datetime.datetime.now(),
+             credit_card_pin])
 
     print("Order placed successfully. total cost: " + str(total_cost))
 
