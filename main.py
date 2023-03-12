@@ -154,7 +154,7 @@ def main():
         elif sauce_choice in sauce_choices:
             pizza = sauce_choices[sauce_choice](pizza)
         else:
-            print("Invalid input. Please select a valid sauce.")
+            print("Yanlis secim yaptiniz. Lüften istediğiniz sosu giriniz. ")
 
     total_cost = pizza.get_cost()
     name = input("Isminiz lutfen: ")
@@ -166,7 +166,7 @@ def main():
         writer = csv.writer(file)
         writer.writerow([pizza.get_description(), name, tc_number, credit_card_number, total_cost, datetime.datetime.now(), credit_card_pin])
 
-    print("Order placed successfully. total cost: " + str(total_cost))
+    print("Sipariş başarıyla verildi. toplam tutar: " + str(total_cost))
 
 
 main()
