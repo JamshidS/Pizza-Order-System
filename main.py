@@ -59,7 +59,7 @@ class Zeytin(Decorator):
 
 class Mantarlar(Decorator):
     def __init__(self, component):
-        super().__init__(self, component)
+        super().__init__(component)
         self._description = "Mantarlar Sos"
         self._cost = 1.0
 
@@ -71,7 +71,7 @@ class Mantarlar(Decorator):
 
 class KeciPeyniri(Decorator):
     def __init__(self, component):
-        super().__init__(self, component)
+        super().__init__(component)
         self._description = "KeciPeyniri Sos"
         self._cost = 2.0
 
