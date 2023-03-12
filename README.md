@@ -1,47 +1,85 @@
 # Pizza Sipariş Sistemi
-## Proje Genel Bakışı
-Bu proje, kullanıcıların kendi pizzalarını tasarlamalarını ve ödeme yaptıktan sonra kullanıcıyı veri tabanına eklemelerini hedeflemektedir. Sistem, kullanıcıların menüdeki pizzayı ve istedikleri sosu seçmesiyle başlar. İkinci aşama olarak seçtikleri sos ve pizzayı seçtikten sonra ödemeye kısmına geçiş yaparlar. Kullanıcılar ödemelerini kredi kartı ile yapacaktır. Her pizzanın bir açıklaması ve fiyatı vardır.
 
-# Proje Adımları
-## Google Colab Dosyası Oluşturma:
+## Proje Genel Bakış
 
-Projenizin .ipynb veya .py uzantısına sahip olduğundan emin olun.
-Projenizde ayrıntıları açıklayan yorum satırları olduğundan emin olun.
-Gerekli Kitaplıkları İçe Aktarma:
+Bu proje, bir pizzacı dükkanının müşterilerinin kendi pizzalarını tasarlamalarını ve ödeme yaptıktan sonra veritabanına kaydetmelerini sağlayan bir sistemdir. Kullanıcılar menüdeki pizzayı ve istedikleri sosu seçerek başlarlar. Daha sonra ödeme yaparlar ve ödemelerini kredi kartı ile yaparlar. Her pizzanın bir açıklaması ve fiyatı vardır.
 
-csv kitaplığını içe aktarın.
-datetime kitaplığını içe aktarın.
-Menu.txt Dosyasını Oluşturma:
+## Gereksinimler
+
+- csv kütüphanesi
+- datetime kütüphanesi
+
+## Menü Dosyası Oluşturma
 
 Menu.txt adlı bir dosya oluşturun ve içine aşağıdaki metni yazın.
 
-yaml
-``` * Lütfen Bir Pizza Tabanı Seçiniz:
+Lütfen Bir Pizza Tabanı Seçiniz:
 1: Klasik
 2: Margarita
 3: TürkPizza
 4: Sade Pizza
-* ve seçeceğiniz sos:
+ve seçeceğiniz sos:
 11: Zeytin
 12: Mantarlar
 13: Keçi Peyniri
 14: Et
 15: Soğan
 16: Mısır
-* Teşekkür ederiz!```
+Teşekkür ederiz!
 
-### Pizza Üst Sınıfını Oluşturma:
 
-Pizza sınıfını oluşturun.
-Bu sınıfın içindeki encapsulation(kapsülleme) için 
-``` get_description()``` ve ```get_cost() ``` methodlarını tanımlayın.
-NOT: Bu açıklama hazırlanan pizzanın kısa bir açıklaması olmalıdır!
+## Üst Sınıf Oluşturma: "Pizza"
 
-### Pizza Alt Sınıflarını Oluşturma:
-Klasik, Margherita, Türk Pizzası, Dominos Pizza vb. pizza sınıflarını oluşturun.
-Her pizzanın kendine ait bir fiyatı ve sahip olduğu değişkenin içinde pizzaların açıklamasının yer alması gerektiğini unutmayın.
-Decorator Üst Sınıfını Oluşturma:
+Pizza sınıfını ve bu sınıfın içindeki encapsulation(kapsülleme) için get_description() ve get_cost() methodları tanımlayın.
 
-### Bir Decorator sınıfı oluşturun.
-Decorator, burada tüm sos sınıflarının süper sınıfı olarak adlandırılır.
-Decorator sınıfı, Pizza sınıfının özell
+```python
+class Pizza:
+    def __init__(self, description="", cost=0):
+        self.description = description
+        self.cost = cost
+        
+    def get_description(self):
+        return self.description
+    
+    def get_cost(self):
+        return self.cost
+```
+# Alt Sınıf Oluşturma: "Pizza"
+Klasik, Margherita, Türk Pizzası vb. pizza sınıfları oluşturun. Her bir pizzanın kendine ait bir fiyatı ve açıklaması olmalıdır.
+
+```
+class KlasikPizza(Pizza):
+    def __init__(self):
+        super().__init__("Klasik Pizza", 15)
+
+class MargheritaPizza(Pizza):
+    def __init__(self):
+        super().__init__("Margarita Pizza", 18)
+
+class TurkPizza(Pizza):
+    def __init__(self):
+        super().__init__("Türk Pizza", 20)
+
+class SadePizza(Pizza):
+    def __init__(self):
+        super().__init__("Sade Pizza", 12)
+```
+
+# Üst Sınıf Oluşturma: "Decorator"
+Bir Decorator sınıfı oluşturun. Decorator, burada tüm sos sınıflarının süper sınıfı olarak adlandırılır.
+Decorator sınıfı, pizza sınıfının özelliklerini kullanarak get_description() ve get_cost() yöntemlerini kullanacaktır.
+```
+class SosDecorator(Pizza):
+    def __init__(self, pizza, description="", cost=0):
+        super().__init__(description, cost)
+        self.component = pizza
+
+    def get_cost(self):
+        return self.component.get_cost() + Pizza.get_cost(self)
+
+    def get_description(self):
+        return self.component.get_description() +
+```
+## Not: 
+Bu proje sadece bir örnek projedir ve gerçek bir pizzacı dükkanı için kullanılmamalıdır. 
+Gerçek bir pizzacı dükkanı için daha kapsamlı bir sistem tasarlanmalıdır.
