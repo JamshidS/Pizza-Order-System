@@ -159,7 +159,7 @@ def main():
     total_cost = pizza.get_cost()
     name = input("Isminiz lutfen: ")
     tc_number = input("TC Kimlik numaranizi giriniz: ") 
-    while(true):
+    while True:
         if len(tc_number) != 11:
           print("TC Kimlik numarasi 11 haneli olmalidir!")
           tc_number = input("TC Kimlik numaranizi giriniz: ") 
